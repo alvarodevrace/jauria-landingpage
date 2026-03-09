@@ -1,0 +1,79 @@
+<nav class="navbar" [class.navbar--scrolled]="isScrolled">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <a class="navbar__logo" (click)="scrollTo('#hero')" style="cursor:pointer">
+      <img src="assets/images/logo.jpg" alt="Jauría Strength and Fitness" class="navbar__logo-img">
+      <span class="navbar__logo-text">JAURÍA</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="navbar__links">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a class="navbar__link" (click)="scrollTo(link.href)" style="cursor:pointer">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- CTA Button -->
+    <a
+      class="btn btn--primary btn--sm navbar__cta"
+      href="https://wa.me/593983936154?text=Hola%2C%20me%20interesa%20unirme%20a%20Jau%C3%ADa%20Strength%20and%20Fitness"
+      target="_blank"
+      rel="noopener"
+    >
+      ÚNETE
+    </a>
+
+    <!-- Hamburger -->
+    <button
+      class="navbar__hamburger"
+      [class.navbar__hamburger--open]="isMenuOpen"
+      (click)="toggleMenu()"
+      aria-label="Abrir menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Overlay -->
+<div class="mobile-menu" [class.mobile-menu--open]="isMenuOpen">
+  <div class="mobile-menu__backdrop" (click)="closeMenu()"></div>
+  <div class="mobile-menu__panel">
+    <button class="mobile-menu__close" (click)="closeMenu()" aria-label="Cerrar menú">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="mobile-menu__logo">
+      <img src="assets/images/logo.jpg" alt="Jauría" class="mobile-menu__logo-img">
+      <span>JAURÍA</span>
+    </div>
+
+    <ul class="mobile-menu__links">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a class="mobile-menu__link" (click)="scrollTo(link.href)" style="cursor:pointer">
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <a
+      class="btn btn--primary mobile-menu__cta"
+      href="https://wa.me/593983936154?text=Hola%2C%20me%20interesa%20unirme%20a%20Jau%C3%ADa%20Strength%20and%20Fitness"
+      target="_blank"
+      rel="noopener"
+      (click)="closeMenu()"
+    >
+      ÚNETE AHORA
+    </a>
+  </div>
+</div>

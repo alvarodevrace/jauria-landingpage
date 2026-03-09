@@ -1,0 +1,41 @@
+<section class="galeria section" id="galeria">
+  <div class="container">
+    <div class="section__header">
+      <span class="section-eyebrow">Nuestra comunidad</span>
+      <h2 class="section-title">GALERÍA</h2>
+      <p class="section-subtitle">
+        Momentos de esfuerzo, superación y comunidad. Esto es Jauría.
+      </p>
+    </div>
+
+    <div class="galeria__grid">
+      @for (image of images; track image.src) {
+        <div class="galeria__item" (click)="openLightbox(image.src, image.alt)">
+          <img
+            [src]="image.src"
+            [alt]="image.alt"
+            class="galeria__img"
+            loading="lazy"
+          >
+          <div class="galeria__overlay">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+            </svg>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+@if (lightboxImage) {
+  <div class="lightbox" (click)="onLightboxBackdropClick($event)">
+    <button class="lightbox__close" (click)="closeLightbox()" aria-label="Cerrar">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <img [src]="lightboxImage" [alt]="lightboxAlt" class="lightbox__image">
+  </div>
+}

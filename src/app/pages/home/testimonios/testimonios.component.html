@@ -1,0 +1,77 @@
+<section class="testimonios section" id="testimonios">
+  <div class="container">
+    <div class="section__header">
+      <span class="section-eyebrow">Lo que dicen</span>
+      <h2 class="section-title">NUESTRA COMUNIDAD</h2>
+      <p class="section-subtitle">
+        Atletas reales, resultados reales. Esto es lo que lograrás con Jauría.
+      </p>
+    </div>
+
+    <div class="testimonios__carousel" #swiperEl>
+      <div class="testimonios__track" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+        @for (t of testimonios; track t.name) {
+          <div class="testimonio-card">
+            <div class="testimonio-card__stars">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFB800">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFB800">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFB800">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFB800">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFB800">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+
+            <blockquote class="testimonio-card__text">
+              "{{ t.text }}"
+            </blockquote>
+
+            <div class="testimonio-card__author">
+              <div class="testimonio-card__avatar" [style.background]="t.color">
+                {{ t.initials }}
+              </div>
+              <div class="testimonio-card__info">
+                <span class="testimonio-card__name">{{ t.name }}</span>
+                <span class="testimonio-card__role">{{ t.role }}</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="testimonios__controls">
+      <button class="testimonios__arrow" (click)="prev()" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+      </button>
+
+      <div class="testimonios__dots">
+        @for (t of testimonios; track t.name; let i = $index) {
+          <button
+            class="testimonios__dot"
+            [class.testimonios__dot--active]="i === currentIndex"
+            (click)="goTo(i)"
+            [attr.aria-label]="'Testimonio ' + (i + 1)"
+          ></button>
+        }
+      </div>
+
+      <button class="testimonios__arrow" (click)="next()" aria-label="Siguiente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+<section class="programas section" id="programas">
+  <div class="container">
+    <div class="section__header">
+      <span class="section-eyebrow">Lo que hacemos</span>
+      <h2 class="section-title">NUESTROS PROGRAMAS</h2>
+      <p class="section-subtitle">
+        Entrenamiento de élite para todos los niveles. Encuentra tu camino hacia la mejor versión de ti mismo.
+      </p>
+    </div>
+
+    <div class="programas__grid">
+      @for (programa of programas; track programa.title) {
+        <article class="programa-card">
+          <div class="programa-card__image-wrap">
+            <img
+              [src]="programa.image"
+              [alt]="programa.title"
+              class="programa-card__image"
+              loading="lazy"
+            >
+            <div class="programa-card__overlay"></div>
+            <span class="programa-card__tag">{{ programa.tag }}</span>
+          </div>
+          <div class="programa-card__body">
+            <h3 class="programa-card__title">{{ programa.title }}</h3>
+            <p class="programa-card__desc">{{ programa.description }}</p>
+            <a
+              class="programa-card__link"
+              href="https://wa.me/593983936154?text=Hola%2C%20me%20interesa%20el%20programa%20{{ programa.title }}"
+              target="_blank"
+              rel="noopener"
+            >
+              Más info
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+<section class="hero" id="hero">
+  <!-- Slides -->
+  <div class="hero__slides">
+    @for (slide of slides; track slide; let i = $index) {
+      <div
+        class="hero__slide"
+        [class.hero__slide--active]="i === currentIndex"
+      >
+        <img
+          [src]="slide"
+          [alt]="'Jauría CrossFit slide ' + (i + 1)"
+          class="hero__slide-img"
+        >
+      </div>
+    }
+  </div>
+
+  <!-- Overlay -->
+  <div class="hero__overlay"></div>
+
+  <!-- Content -->
+  <div class="hero__content">
+    <div class="container">
+      <div class="hero__text">
+        <span class="hero__eyebrow">CrossFit · Quito, Ecuador</span>
+        <h1 class="hero__title">
+          <span class="hero__title-main">JAURÍA</span>
+          <span class="hero__title-sub">STRENGTH AND FITNESS</span>
+        </h1>
+        <p class="hero__tagline">
+          Forja tu cuerpo. Domina tu mente.<br>
+          Únete a la élite del CrossFit en Quito.
+        </p>
+        <div class="hero__actions">
+          <a
+            class="btn btn--primary btn--lg hero__cta"
+            href="https://wa.me/593983936154?text=Hola%2C%20quiero%20unirme%20a%20Jau%C3%ADa%20Strength%20and%20Fitness"
+            target="_blank"
+            rel="noopener"
+          >
+            ÚNETE AHORA
+          </a>
+          <button
+            class="btn btn--outline btn--lg hero__cta"
+            (click)="scrollTo('#programas')"
+          >
+            VER PROGRAMAS
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="hero__dots">
+    @for (slide of slides; track slide; let i = $index) {
+      <button
+        class="hero__dot"
+        [class.hero__dot--active]="i === currentIndex"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Ir a slide ' + (i + 1)"
+      ></button>
+    }
+  </div>
+
+  <!-- Scroll Arrow -->
+  <div class="hero__scroll" (click)="scrollTo('#stats')">
+    <span class="hero__scroll-label">SCROLL</span>
+    <div class="hero__scroll-arrow">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </div>
+  </div>
+</section>

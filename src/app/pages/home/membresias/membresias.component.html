@@ -1,0 +1,58 @@
+<section class="membresias section" id="membresias">
+  <div class="container">
+    <div class="section__header">
+      <span class="section-eyebrow">Planes y precios</span>
+      <h2 class="section-title">MEMBRESÍAS</h2>
+      <p class="section-subtitle">
+        Escoge el plan que se adapta a tu compromiso. Sin contratos ocultos.
+      </p>
+    </div>
+
+    <div class="membresias__grid">
+      @for (plan of membresias; track plan.name) {
+        <div class="plan-card" [class.plan-card--popular]="plan.popular">
+          @if (plan.popular) {
+            <div class="plan-card__badge">MÁS POPULAR</div>
+          }
+
+          <div class="plan-card__header">
+            <h3 class="plan-card__name">{{ plan.name }}</h3>
+            <div class="plan-card__price">
+              <span class="plan-card__currency">$</span>
+              <span class="plan-card__amount">{{ plan.price }}</span>
+              <span class="plan-card__period">{{ plan.period }}</span>
+            </div>
+            <p class="plan-card__billing">{{ plan.billing }}</p>
+          </div>
+
+          <ul class="plan-card__benefits">
+            @for (benefit of plan.benefits; track benefit) {
+              <li class="plan-card__benefit">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {{ benefit }}
+              </li>
+            }
+          </ul>
+
+          <a
+            class="btn plan-card__cta"
+            [class.btn--primary]="plan.popular"
+            [class.btn--outline-red]="!plan.popular"
+            [href]="'https://wa.me/593983936154?text=' + plan.waText"
+            target="_blank"
+            rel="noopener"
+          >
+            COMENZAR AHORA
+          </a>
+        </div>
+      }
+    </div>
+
+    <p class="membresias__note">
+      * Primera clase gratis. Cancela en cualquier momento.
+      <a href="https://wa.me/593983936154" target="_blank" rel="noopener">Contáctanos</a> para más info.
+    </p>
+  </div>
+</section>

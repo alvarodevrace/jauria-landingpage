@@ -1,0 +1,24 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Angular build
+dist/
+.angular/
+
+# Environment (si hubiera secretos locales)
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
