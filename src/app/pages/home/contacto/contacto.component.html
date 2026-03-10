@@ -18,14 +18,18 @@
               <polyline points="22 4 12 14.01 9 11.01"/>
             </svg>
             <h3>¡Mensaje enviado!</h3>
-            <p>Te contactaremos pronto. También puedes escribirnos por WhatsApp.</p>
+            <p>Recibimos tu lead correctamente. {{ respuestaEsperada }}</p>
+            <div class="contacto__success-meta">
+              <span>Te contactaremos por WhatsApp o email</span>
+              <span>Si prefieres acelerar el proceso, escríbenos directo</span>
+            </div>
             <a
               class="btn btn--primary"
-              href="https://wa.me/593983936154"
+              [href]="whatsappUrl"
               target="_blank"
               rel="noopener"
             >
-              WhatsApp
+              IR A WHATSAPP
             </a>
           </div>
         } @else {
@@ -126,6 +130,19 @@
 
       <!-- Map & Info -->
       <div class="contacto__info">
+        <div class="contacto__trust">
+          <span class="contacto__trust-eyebrow">Respuesta y seguimiento</span>
+          <h3>Te guiamos según tu objetivo y disponibilidad.</h3>
+          <p>
+            Déjanos tus datos y te recomendamos el programa ideal. Si ya sabes que quieres empezar,
+            WhatsApp sigue siendo el canal más rápido.
+          </p>
+          <div class="contacto__trust-actions">
+            <a class="btn btn--primary" [href]="whatsappUrl" target="_blank" rel="noopener">WHATSAPP DIRECTO</a>
+            <span class="contacto__trust-note">{{ respuestaEsperada }}</span>
+          </div>
+        </div>
+
         <div class="contacto__map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7936!2d-78.4845541!3d-0.1663393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMDDCsDEwJzAwLjYiUyA3OMKwMjknMDQuNiJX!5e0!3m2!1ses!2sec!4v1"
@@ -177,11 +194,11 @@
               <p class="contacto__detail-label">Instagram</p>
               <a
                 class="contacto__detail-value contacto__detail-link"
-                href="https://www.instagram.com/jauriastrengthandfitness/"
+                [href]="instagramUrl"
                 target="_blank"
                 rel="noopener"
               >
-                &#64;jauriastrenghtfitness#64;jauriastrengthandfitness
+                {{ instagramHandle }}
               </a>
             </div>
           </div>

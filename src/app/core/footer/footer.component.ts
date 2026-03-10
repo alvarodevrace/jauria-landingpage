@@ -10,6 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
+  readonly whatsappUrl = 'https://wa.me/593983936154';
+  readonly instagramUrl = 'https://www.instagram.com/jauriastrengthandfitness/';
+  readonly instagramHandle = '@jauriastrengthandfitness';
+  readonly responseCopy = 'Respuesta rápida en horario del box';
 
   navLinks = [
     { label: 'Programas', href: '#programas' },

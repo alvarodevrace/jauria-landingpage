@@ -21,6 +21,10 @@ interface LeadForm {
 })
 export class ContactoComponent implements OnInit {
   private supabase!: SupabaseClient;
+  readonly whatsappUrl = 'https://wa.me/593983936154';
+  readonly instagramUrl = 'https://www.instagram.com/jauriastrengthandfitness/';
+  readonly instagramHandle = '@jauriastrengthandfitness';
+  readonly respuestaEsperada = 'Respondemos en horario del box, normalmente el mismo dia.';
 
   form: LeadForm = {
     nombre: '',
