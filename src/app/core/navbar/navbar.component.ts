@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { createWhatsAppUrl, heroJoinMessage, navLinks } from '../../shared/content/landing-content';
 
 @Component({
   selector: 'app-navbar',
@@ -11,14 +12,9 @@ import { CommonModule } from '@angular/common';
 export class NavbarComponent implements OnInit, OnDestroy {
   isScrolled = false;
   isMenuOpen = false;
-
-  navLinks = [
-    { label: 'Programas', href: '#programas' },
-    { label: 'Galería', href: '#galeria' },
-    { label: 'Membresías', href: '#membresias' },
-    { label: 'Horarios', href: '#horarios' },
-    { label: 'Contacto', href: '#contacto' }
-  ];
+  readonly navLinks = navLinks;
+  readonly joinUrl = createWhatsAppUrl(heroJoinMessage);
+  private readonly isFirefox = typeof navigator !== 'undefined' && /firefox/i.test(navigator.userAgent);
 
   @HostListener('window:scroll')
   onScroll(): void {
@@ -27,9 +23,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isScrolled = window.scrollY > 50;
+    document.documentElement.classList.toggle('browser-firefox', this.isFirefox);
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    document.documentElement.classList.remove('browser-firefox');
+  }
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;

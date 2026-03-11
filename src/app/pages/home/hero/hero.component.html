@@ -25,46 +25,39 @@
         <span class="hero__eyebrow">CrossFit · Quito, Ecuador</span>
         <h1 class="hero__title">
           <span class="hero__title-main">JAURÍA</span>
-          <span class="hero__title-sub">STRENGTH AND FITNESS</span>
+          <span class="hero__title-sub">ENTRENA FUERTE. VIVE LIVIANO.</span>
         </h1>
         <p class="hero__tagline">
-          Forja tu cuerpo. Domina tu mente.<br>
-          Únete a la élite del CrossFit en Quito.
+          Un box diseñado para entrenar con intención, progresar con acompañamiento real
+          y sentirte parte de una comunidad seria desde el primer día.
         </p>
+        <div class="hero__proof">
+          <span>Clase de prueba</span>
+          <span>Coaching cercano</span>
+          <span>Comunidad real</span>
+        </div>
         <div class="hero__actions">
           <a
             class="btn btn--primary btn--lg hero__cta"
-            href="https://wa.me/593983936154?text=Hola%2C%20quiero%20unirme%20a%20Jau%C3%ADa%20Strength%20and%20Fitness"
+            [href]="joinUrl"
             target="_blank"
             rel="noopener"
           >
-            ÚNETE AHORA
+            AGENDA TU VISITA
           </a>
           <button
             class="btn btn--outline btn--lg hero__cta"
-            (click)="scrollTo('#programas')"
+            (click)="scrollTo('#membresias')"
           >
-            VER PROGRAMAS
+            VER MEMBRESÍAS
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Dots -->
-  <div class="hero__dots">
-    @for (slide of slides; track slide; let i = $index) {
-      <button
-        class="hero__dot"
-        [class.hero__dot--active]="i === currentIndex"
-        (click)="goToSlide(i)"
-        [attr.aria-label]="'Ir a slide ' + (i + 1)"
-      ></button>
-    }
-  </div>
-
   <!-- Scroll Arrow -->
-  <div class="hero__scroll" (click)="scrollTo('#stats')">
+  <div class="hero__scroll" (click)="scrollTo('#programas')">
     <span class="hero__scroll-label">SCROLL</span>
     <div class="hero__scroll-arrow">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

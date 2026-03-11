@@ -1,13 +1,13 @@
-$primary: #B71C1C;
-$bg: #0a0a0a;
-$surface: #141414;
-$surface2: #1e1e1e;
-$white: #FFFFFF;
-$text: #CCCCCC;
-$muted: #666666;
-$border: #2a2a2a;
+$primary: #A61F24;
+$bg: #0E0F10;
+$surface: #151718;
+$surface2: #1D2022;
+$white: #F4F1EB;
+$text: #D2CBC1;
+$muted: #938C84;
+$border: #2B3033;
 $font-heading: 'Bebas Neue', sans-serif;
-$font-body: 'Inter', sans-serif;
+$font-body: 'Manrope', sans-serif;
 
 .testimonios {
   background: $bg;
@@ -44,72 +44,43 @@ $font-body: 'Inter', sans-serif;
   margin: 0 auto;
 }
 
-.testimonios__carousel {
-  overflow: hidden;
-  border-radius: 4px;
-  margin-bottom: 40px;
-}
+.testimonios__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
 
-.testimonios__track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .testimonio-card {
-  min-width: 100%;
   background: $surface;
-  border: 1px solid $border;
-  border-radius: 4px;
-  padding: 24px 20px;
+  border: 1px solid rgba($white, 0.06);
+  border-radius: 24px;
+  padding: 24px 22px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 
   @media (min-width: 640px) {
-    padding: 40px 48px;
-    gap: 24px;
-  }
-
-  @media (min-width: 768px) {
-    padding: 60px 80px;
-  }
-
-  &__stars {
-    display: flex;
-    gap: 4px;
+    padding: 28px;
   }
 
   &__text {
     font-family: $font-body;
-    font-size: clamp(14px, 2vw, 20px);
+    font-size: 15px;
     font-weight: 400;
-    line-height: 1.7;
+    line-height: 1.8;
     color: $text;
     font-style: normal;
-    max-width: 800px;
     margin: 0;
-
-    &::before {
-      content: '"';
-      font-family: Georgia, serif;
-      font-size: 3.5em;
-      line-height: 0;
-      vertical-align: -0.35em;
-      color: $primary;
-      opacity: 0.4;
-      margin-right: 4px;
-
-      @media (min-width: 640px) {
-        font-size: 5em;
-        vertical-align: -0.4em;
-      }
-    }
   }
 
   &__author {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
   }
 
   &__avatar {
@@ -129,7 +100,7 @@ $font-body: 'Inter', sans-serif;
   &__info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   &__name {
@@ -139,59 +110,12 @@ $font-body: 'Inter', sans-serif;
     color: $white;
   }
 
-  &__role {
+  &__eyebrow {
     font-family: $font-body;
-    font-size: 12px;
-    color: $muted;
-    letter-spacing: 0.05em;
-  }
-}
-
-.testimonios__controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-}
-
-.testimonios__arrow {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid $border;
-  background: transparent;
-  color: $text;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: $primary;
-    border-color: $primary;
-    color: $white;
-  }
-}
-
-.testimonios__dots {
-  display: flex;
-  gap: 8px;
-}
-
-.testimonios__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: $border;
-  border: none;
-  cursor: pointer;
-  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0;
-
-  &--active {
-    background: $primary;
-    width: 24px;
-    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $primary;
   }
 }

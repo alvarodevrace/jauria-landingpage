@@ -1,13 +1,13 @@
-$primary: #B71C1C;
-$bg: #0a0a0a;
-$surface: #141414;
-$surface2: #1e1e1e;
-$white: #FFFFFF;
-$text: #CCCCCC;
-$muted: #666666;
-$border: #2a2a2a;
+$primary: #A61F24;
+$bg: #0E0F10;
+$surface: #151718;
+$surface2: #1D2022;
+$white: #F4F1EB;
+$text: #D2CBC1;
+$muted: #938C84;
+$border: #2B3033;
 $font-heading: 'Bebas Neue', sans-serif;
-$font-body: 'Inter', sans-serif;
+$font-body: 'Manrope', sans-serif;
 
 .contacto {
   background: $surface;
@@ -184,8 +184,8 @@ $font-body: 'Inter', sans-serif;
     border-color: $primary;
 
     &:hover:not(:disabled) {
-      background: darken(#B71C1C, 8%);
-      border-color: darken(#B71C1C, 8%);
+      background: #C12A30;
+      border-color: #C12A30;
     }
 
     &:disabled {

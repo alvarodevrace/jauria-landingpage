@@ -1,0 +1,25 @@
+<section class="club section">
+  <div class="container">
+    <div class="club__grid">
+      <div class="club__copy">
+        <span class="section-eyebrow">Bienvenido a Jauría</span>
+        <h2 class="section-title">UN CLUB DE FUERZA, HÁBITO Y BUENA ENERGÍA</h2>
+        <p class="section-subtitle">
+          Entrenar aquí no se siente como cumplir una obligación. Se siente como entrar a un lugar
+          donde vuelves a moverte bien, a respirar mejor y a construir una rutina que sí quieres sostener.
+        </p>
+      </div>
+
+      <div class="club__circles" aria-label="Beneficios principales de entrenar en Jauría">
+        @for (message of messages; track message.title) {
+          <article class="club__circle-card">
+            <div class="club__circle">
+              <span>{{ message.title }}</span>
+            </div>
+            <p>{{ message.description }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>

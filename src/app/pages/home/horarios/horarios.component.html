@@ -1,74 +1,36 @@
 <section class="horarios section" id="horarios">
   <div class="container">
     <div class="section__header">
-      <span class="section-eyebrow">Planifica tu semana</span>
+      <span class="section-eyebrow">Tu semana en orden</span>
       <h2 class="section-title">HORARIOS</h2>
       <p class="section-subtitle">
-        Clases disponibles de lunes a sábado. Reserva tu lugar en cada sesión.
+        Un horario claro para que entrenar se vuelva parte de tu rutina, no una decisión que postergas.
       </p>
     </div>
 
-    <!-- Filter Chips -->
-    <div class="horarios__filters">
-      @for (filter of filters; track filter) {
-        <button
-          class="horarios__filter"
-          [class.horarios__filter--active]="activeFilter === filter"
-          (click)="setFilter(filter)"
-        >
-          {{ filter === 'todos' ? 'Todos' : filter }}
-        </button>
-      }
-    </div>
-
-    <!-- Wrapper con scroll horizontal en móvil -->
-    <div class="horarios__table-wrap">
-      <div class="horarios__grid">
+    <div class="horarios__grid">
         @for (day of schedule; track day.day) {
-          <div class="day-col">
-            <div class="day-col__header">
-              <span class="day-col__short">{{ day.short }}</span>
-              <span class="day-col__full">{{ day.day }}</span>
-            </div>
-            <div class="day-col__classes">
-              @for (cls of getFilteredClasses(day.classes); track cls.time + cls.type) {
-                <div class="class-slot" [class]="'class-slot--' + cls.type.toLowerCase().split(' ').join('-')">
-                  <span class="class-slot__time">{{ cls.time }}</span>
-                  <span class="class-slot__type">{{ cls.type }}</span>
-                  @if (cls.coach) {
-                    <span class="class-slot__coach">{{ cls.coach }}</span>
-                  }
-                </div>
-              }
-              @if (getFilteredClasses(day.classes).length === 0) {
-                <div class="day-col__empty">Sin clases</div>
-              }
-            </div>
+        <article class="day-col">
+          <div class="day-col__header">
+            <span class="day-col__short">{{ day.short }}</span>
+            <span class="day-col__full">{{ day.day }}</span>
           </div>
+          <div class="day-col__summary">{{ getDailySummary(day) }}</div>
+          <div class="day-col__chips">
+            @for (tag of getDailyTags(day); track tag) {
+              <span class="day-chip">{{ tag }}</span>
+            }
+          </div>
+          <div class="day-col__count">{{ day.classes.length }} bloques disponibles</div>
+        </article>
         }
-      </div>
-    </div>
-
-    <!-- Leyenda de colores -->
-    <div class="horarios__legend">
-      <div class="legend-item">
-        <span class="legend-item__dot legend-item__dot--wod"></span>
-        WOD
-      </div>
-      <div class="legend-item">
-        <span class="legend-item__dot legend-item__dot--opengym"></span>
-        Open Gym
-      </div>
-      <div class="legend-item">
-        <span class="legend-item__dot legend-item__dot--barbell"></span>
-        Barbell Club
-      </div>
     </div>
 
     <p class="horarios__note">
-      Horarios sujetos a cambios. Síguenos en
-      <a href="https://www.instagram.com/jauriastrengthandfitness/" target="_blank" rel="noopener">&#64;jauriastrengthandfitness</a>
-      para actualizaciones.
+      Si quieres el horario exacto actualizado o saber qué bloque te conviene más, escríbenos por Instagram o WhatsApp.
+      Síguenos en
+      <a [href]="instagramUrl" target="_blank" rel="noopener">{{ instagramHandle }}</a>
+      para actualizaciones semanales.
     </p>
   </div>
 </section>

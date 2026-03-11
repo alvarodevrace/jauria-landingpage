@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { createWhatsAppUrl, heroJoinMessage, slides } from '../../../shared/content/landing-content';
 
 @Component({
   selector: 'app-hero',
@@ -9,15 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './hero.component.scss'
 })
 export class HeroComponent implements OnInit, OnDestroy {
-  slides = [
-    'assets/images/jauria2.jpg',
-    'assets/images/2024-02-26.jpg',
-    'assets/images/2024-02-28.jpg',
-    'assets/images/2024-02-284.jpg',
-    'assets/images/unnamed6.jpg',
-    'assets/images/unnamed7.jpg'
-  ];
-
+  readonly slides = slides;
+  readonly joinUrl = createWhatsAppUrl(heroJoinMessage);
   currentIndex = 0;
   private intervalId: ReturnType<typeof setInterval> | null = null;
   private readonly INTERVAL_MS = 5000;

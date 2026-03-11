@@ -18,6 +18,10 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+html.browser-firefox {
+  scroll-behavior: auto;
+}
+
 body {
   background-color: v.$color-bg;
   color: v.$color-text;
@@ -141,8 +145,8 @@ ul, ol {
     border: 2px solid v.$color-primary;
 
     &:hover {
-      background: darken(#B71C1C, 8%);
-      border-color: darken(#B71C1C, 8%);
+      background: v.$color-primary-hover;
+      border-color: v.$color-primary-hover;
       transform: translateY(-1px);
     }
   }

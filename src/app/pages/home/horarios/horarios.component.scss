@@ -1,18 +1,13 @@
-$primary: #B71C1C;
-$bg: #0a0a0a;
-$surface: #141414;
-$surface2: #1e1e1e;
-$white: #FFFFFF;
-$text: #CCCCCC;
-$muted: #666666;
-$border: #2a2a2a;
+$primary: #A61F24;
+$bg: #0E0F10;
+$surface: #151718;
+$surface2: #1D2022;
+$white: #F4F1EB;
+$text: #D2CBC1;
+$muted: #938C84;
+$border: #2B3033;
 $font-heading: 'Bebas Neue', sans-serif;
-$font-body: 'Inter', sans-serif;
-
-// Solo 3 colores de la paleta para tipos de clase
-$wod-color:     #B71C1C;   // rojo sangre
-$opengym-color: #CCCCCC;   // blanco/gris
-$barbell-color: #7B1111;   // rojo más oscuro
+$font-body: 'Manrope', sans-serif;
 
 .horarios {
   background: $surface;
@@ -50,229 +45,85 @@ $barbell-color: #7B1111;   // rojo más oscuro
 }
 
 // ─── Filtros ───────────────────────────────────────────────
-.horarios__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 32px;
-  justify-content: center;
-
-  @media (min-width: 640px) {
-    margin-bottom: 40px;
-  }
-}
-
-.horarios__filter {
-  padding: 10px 18px;
-  min-height: 44px;
-  min-width: 44px;
-  font-family: $font-body;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: 1px solid $border;
-  border-radius: 2px;
-  background: transparent;
-  color: $muted;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: $primary;
-    color: $primary;
-  }
-
-  &--active {
-    background: $primary;
-    border-color: $primary;
-    color: $white;
-  }
-}
-
-// ─── Tabla wrapper con scroll horizontal en móvil ──────────
-.horarios__table-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  // Hint visual en móvil de que hay scroll
-  @media (max-width: 639px) {
-    // borde sutil derecho para indicar scroll
-    mask-image: linear-gradient(to right, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
-  }
-}
-
-// ─── Grid de días ──────────────────────────────────────────
 .horarios__grid {
   display: grid;
-  // Móvil: mínimo 120px por columna, 6 cols horizontales con scroll
-  grid-template-columns: repeat(6, minmax(110px, 1fr));
-  gap: 2px;
-  // Ancho mínimo para que no se aplaste en móvil
-  min-width: 660px;
-
-  @media (min-width: 1024px) {
-    min-width: unset;
-    grid-template-columns: repeat(6, 1fr);
-  }
-}
-
-// ─── Columna de día ────────────────────────────────────────
-.day-col {
-  background: $bg;
-
-  &__header {
-    background: $surface2;
-    padding: 10px 6px;
-    text-align: center;
-    border-bottom: 2px solid $primary;
-
-    @media (min-width: 640px) {
-      padding: 12px 8px;
-    }
-  }
-
-  // Abreviatura siempre visible en móvil/tablet
-  &__short {
-    font-family: $font-heading;
-    font-size: 16px;
-    letter-spacing: 0.05em;
-    color: $white;
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  }
-
-  // Nombre completo solo en desktop
-  &__full {
-    display: none;
-
-    @media (min-width: 1024px) {
-      display: block;
-      font-family: $font-heading;
-      font-size: 15px;
-      letter-spacing: 0.05em;
-      color: $white;
-    }
-  }
-
-  &__classes {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    padding: 6px;
-    min-height: 180px;
-
-    @media (min-width: 640px) {
-      padding: 8px;
-      min-height: 220px;
-    }
-  }
-
-  &__empty {
-    font-family: $font-body;
-    font-size: 11px;
-    color: $muted;
-    text-align: center;
-    padding: 16px 0;
-    font-style: italic;
-  }
-}
-
-// ─── Slot de clase ─────────────────────────────────────────
-.class-slot {
-  padding: 5px 6px;
-  border-radius: 2px;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  border-left: 3px solid transparent;
+  grid-template-columns: 1fr;
+  gap: 14px;
 
   @media (min-width: 640px) {
-    padding: 7px 8px;
-    gap: 2px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  &--wod {
-    background: rgba($wod-color, 0.12);
-    border-left-color: $wod-color;
-    .class-slot__type { color: $wod-color; }
-  }
-
-  &--open-gym {
-    background: rgba($opengym-color, 0.07);
-    border-left-color: $opengym-color;
-    .class-slot__type { color: $opengym-color; }
-  }
-
-  &--barbell {
-    background: rgba($barbell-color, 0.15);
-    border-left-color: $barbell-color;
-    .class-slot__type { color: $barbell-color; }
-  }
-
-  &__time {
-    font-family: $font-heading;
-    font-size: 13px;
-    color: $white;
-    line-height: 1;
-
-    @media (min-width: 640px) {
-      font-size: 15px;
-    }
-  }
-
-  &__type {
-    font-family: $font-body;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-
-    @media (min-width: 640px) {
-      font-size: 10px;
-    }
-  }
-
-  &__coach {
-    font-family: $font-body;
-    font-size: 9px;
-    color: $muted;
-
-    @media (min-width: 640px) {
-      font-size: 10px;
-    }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-// ─── Leyenda de colores ────────────────────────────────────
-.horarios__legend {
+.day-col {
+  background: $bg;
+  border: 1px solid rgba($white, 0.06);
+  border-radius: 22px;
+  padding: 18px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 16px;
-  justify-content: center;
-  margin-top: 24px;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  &__short {
+    font-family: $font-heading;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: $white;
+  }
+
+  &__full {
+    font-family: $font-body;
+    font-size: 12px;
+    color: $muted;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__summary {
+    font-family: $font-heading;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+    color: $white;
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__count {
+    font-family: $font-body;
+    font-size: 12px;
+    color: $muted;
+  }
 }
 
-.legend-item {
-  display: flex;
+.day-chip {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba($white, 0.04);
+  border: 1px solid rgba($white, 0.06);
   font-family: $font-body;
-  font-size: 12px;
-  color: $muted;
-
-  &__dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-
-    &--wod     { background: $wod-color; }
-    &--opengym { background: $opengym-color; }
-    &--barbell { background: $barbell-color; }
-  }
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $text;
 }
 
 // ─── Nota ─────────────────────────────────────────────────
