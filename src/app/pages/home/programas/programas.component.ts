@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Programa, createWhatsAppUrl, programas } from '../../../shared/content/landing-content';
+import { PracticeArea, createWhatsAppUrl, practiceAreas } from '../../../shared/content/landing-content';
 
 @Component({
   selector: 'app-programas',
@@ -10,9 +10,7 @@ import { Programa, createWhatsAppUrl, programas } from '../../../shared/content/
   styleUrl: './programas.component.scss'
 })
 export class ProgramasComponent {
-  readonly programas: Programa[] = programas.filter((programa) =>
-    ['CrossFit WOD', 'Barbell Club', 'Fundamentos'].includes(programa.title)
-  );
+  readonly practiceAreas: PracticeArea[] = practiceAreas;
   readonly atmosphereImages = [
     'assets/images/unnamed6.jpg',
     'assets/images/2024-02-28.jpg',
@@ -20,6 +18,6 @@ export class ProgramasComponent {
   ];
 
   getProgramUrl(title: string): string {
-    return createWhatsAppUrl(`Hola, me interesa el programa ${title}`);
+    return createWhatsAppUrl(`Hola, quiero saber cómo entrenan ${title} en Jauría`);
   }
 }

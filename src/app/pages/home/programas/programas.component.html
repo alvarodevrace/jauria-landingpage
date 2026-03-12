@@ -2,11 +2,11 @@
   <div class="container">
     <div class="programas__intro">
       <div class="programas__copy">
-        <span class="section-eyebrow">Entrena con estructura</span>
-        <h2 class="section-title">MENOS RUIDO. MÁS PROGRESO.</h2>
+        <span class="section-eyebrow">Áreas de práctica</span>
+        <h2 class="section-title">QUÉ SE ENTRENA EN JAURÍA</h2>
         <p class="section-subtitle">
-          Jauría no se siente como un gimnasio saturado. Se siente como un lugar donde sabes qué hacer,
-          por qué lo haces y cómo avanzar semana a semana.
+          Todo entra en un WOD, pero el progreso nace de dominar distintas capacidades:
+          motor, gimnasia, barra, fuerza y técnica.
         </p>
       </div>
       <div class="programas__media">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="programas__grid">
-      @for (programa of programas; track programa.title) {
+      @for (programa of practiceAreas; track programa.title) {
         <article class="programa-card">
           <div class="programa-card__image-wrap">
             <img
@@ -39,7 +39,7 @@
     </div>
 
     <div class="programas__footer">
-      <p>Te ayudamos a elegir el programa ideal según tu nivel y tu disponibilidad.</p>
+      <p>Cada semana mezclamos estas áreas dentro del WOD para que entrenes con intención y no por improvisación.</p>
       <a class="btn btn--outline-red" [href]="getProgramUrl('Jauría Strength and Fitness')" target="_blank" rel="noopener">
         HABLAR CON EL BOX
       </a>

@@ -3,7 +3,7 @@ export interface NavLink {
   href: string;
 }
 
-export interface Programa {
+export interface PracticeArea {
   title: string;
   description: string;
   image: string;
@@ -22,7 +22,7 @@ export interface Membresia {
 
 export interface ClassSlot {
   time: string;
-  type: 'WOD' | 'Open Gym' | 'Barbell';
+  type: 'WOD';
   coach?: string;
 }
 
@@ -79,7 +79,7 @@ export const landingDataStatus = {
 
 export const navLinks: NavLink[] = [
   { label: 'Experiencia', href: '#galeria' },
-  { label: 'Programas', href: '#programas' },
+  { label: 'Áreas', href: '#programas' },
   { label: 'Membresías', href: '#membresias' },
   { label: 'Horarios', href: '#horarios' },
   { label: 'Comunidad', href: '#testimonios' },
@@ -156,42 +156,36 @@ export const slides: string[] = [
   'assets/images/unnamed7.jpg'
 ];
 
-export const programas: Programa[] = [
+export const practiceAreas: PracticeArea[] = [
   {
-    title: 'CrossFit WOD',
-    description: 'Entrenamiento funcional de alta intensidad. Cada día un workout diferente que desafía tus límites.',
+    title: 'Metcon',
+    description: 'Acondicionamiento metabólico para empujar el motor: correr, remar, saltar cuerda y sostener intensidad.',
     image: 'assets/images/2024-02-28.jpg',
-    tag: 'Todo nivel'
+    tag: 'Condición'
   },
   {
-    title: 'Open Gym',
-    description: 'Tiempo libre en el box para trabajar tu fuerza, movilidad o practicar movimientos técnicos.',
+    title: 'Gymnastics',
+    description: 'Movimientos con el propio peso corporal: dominadas, flexiones, toes-to-bar, pinos y control corporal.',
     image: 'assets/images/unnamed8.jpg',
-    tag: 'Flexible'
+    tag: 'Control'
   },
   {
-    title: 'Barbell Club',
-    description: 'Programa especializado en halterofilia olímpica. Snatch, clean & jerk y técnica de barra.',
+    title: 'Weightlifting',
+    description: 'Levantamiento olímpico y técnica de barra para snatch, clean & jerk y posiciones eficientes.',
     image: 'assets/images/2024-02-283.jpg',
-    tag: 'Técnico'
+    tag: 'Técnica'
   },
   {
-    title: 'CrossFit Kids',
-    description: 'Movimientos funcionales adaptados para niños y adolescentes. Deporte, diversión y valores.',
+    title: 'Powerlifting',
+    description: 'Fuerza bruta aplicada a sentadilla, peso muerto, presses y patrones de empuje pesados.',
     image: 'assets/images/2024-02-281.jpg',
-    tag: 'Niños'
+    tag: 'Fuerza'
   },
   {
-    title: 'Competición',
-    description: 'Prepárate para los Open de CrossFit y competencias locales. Entrenamiento específico de alto rendimiento.',
+    title: 'Skills',
+    description: 'Sesiones dedicadas a practicar con calma la técnica de un movimiento difícil hasta dominarlo.',
     image: 'assets/images/unnamed3.jpg',
-    tag: 'Avanzado'
-  },
-  {
-    title: 'Fundamentos',
-    description: 'Programa de introducción al CrossFit. Aprende los movimientos básicos con seguridad y eficacia.',
-    image: 'assets/images/2024-02-285.jpg',
-    tag: 'Principiante'
+    tag: 'Precisión'
   }
 ];
 
@@ -204,7 +198,6 @@ export const membresias: Membresia[] = [
     popular: false,
     benefits: [
       'Acceso ilimitado WOD',
-      'Open Gym disponible',
       'Evaluación inicial',
       'App de seguimiento',
       'Comunidad Jauría'
@@ -219,11 +212,10 @@ export const membresias: Membresia[] = [
     popular: true,
     benefits: [
       'Acceso ilimitado WOD',
-      'Open Gym disponible',
       'Evaluación inicial',
       'App de seguimiento',
       'Comunidad Jauría',
-      'Acceso Barbell Club'
+      'Seguimiento de progresos'
     ],
     waMessage: 'Hola, me interesa la membresía Trimestral de Jauría'
   },
@@ -235,11 +227,9 @@ export const membresias: Membresia[] = [
     popular: false,
     benefits: [
       'Acceso ilimitado WOD',
-      'Open Gym disponible',
       'Evaluación inicial',
       'App de seguimiento',
       'Comunidad Jauría',
-      'Acceso Barbell Club',
       'Nutrición básica incluida'
     ],
     waMessage: 'Hola, me interesa la membresía Anual de Jauría'
@@ -254,11 +244,11 @@ export const schedule: DaySchedule[] = [
       { time: '06:00', type: 'WOD', coach: 'Miguel' },
       { time: '07:00', type: 'WOD', coach: 'Sara' },
       { time: '08:00', type: 'WOD', coach: 'Miguel' },
-      { time: '12:00', type: 'Open Gym' },
+      { time: '12:00', type: 'WOD' },
       { time: '17:00', type: 'WOD', coach: 'Carlos' },
       { time: '18:00', type: 'WOD', coach: 'Sara' },
       { time: '19:00', type: 'WOD', coach: 'Carlos' },
-      { time: '20:00', type: 'Barbell', coach: 'Miguel' }
+      { time: '20:00', type: 'WOD', coach: 'Miguel' }
     ]
   },
   {
@@ -268,7 +258,7 @@ export const schedule: DaySchedule[] = [
       { time: '06:00', type: 'WOD', coach: 'Sara' },
       { time: '07:00', type: 'WOD', coach: 'Carlos' },
       { time: '08:00', type: 'WOD', coach: 'Sara' },
-      { time: '12:00', type: 'Open Gym' },
+      { time: '12:00', type: 'WOD' },
       { time: '17:00', type: 'WOD', coach: 'Miguel' },
       { time: '18:00', type: 'WOD', coach: 'Carlos' },
       { time: '19:00', type: 'WOD', coach: 'Miguel' }
@@ -281,11 +271,11 @@ export const schedule: DaySchedule[] = [
       { time: '06:00', type: 'WOD', coach: 'Carlos' },
       { time: '07:00', type: 'WOD', coach: 'Miguel' },
       { time: '08:00', type: 'WOD', coach: 'Carlos' },
-      { time: '12:00', type: 'Open Gym' },
+      { time: '12:00', type: 'WOD' },
       { time: '17:00', type: 'WOD', coach: 'Sara' },
       { time: '18:00', type: 'WOD', coach: 'Miguel' },
       { time: '19:00', type: 'WOD', coach: 'Sara' },
-      { time: '20:00', type: 'Barbell', coach: 'Carlos' }
+      { time: '20:00', type: 'WOD', coach: 'Carlos' }
     ]
   },
   {
@@ -295,7 +285,7 @@ export const schedule: DaySchedule[] = [
       { time: '06:00', type: 'WOD', coach: 'Miguel' },
       { time: '07:00', type: 'WOD', coach: 'Sara' },
       { time: '08:00', type: 'WOD', coach: 'Miguel' },
-      { time: '12:00', type: 'Open Gym' },
+      { time: '12:00', type: 'WOD' },
       { time: '17:00', type: 'WOD', coach: 'Carlos' },
       { time: '18:00', type: 'WOD', coach: 'Sara' },
       { time: '19:00', type: 'WOD', coach: 'Carlos' }
@@ -308,11 +298,11 @@ export const schedule: DaySchedule[] = [
       { time: '06:00', type: 'WOD', coach: 'Sara' },
       { time: '07:00', type: 'WOD', coach: 'Carlos' },
       { time: '08:00', type: 'WOD', coach: 'Sara' },
-      { time: '12:00', type: 'Open Gym' },
+      { time: '12:00', type: 'WOD' },
       { time: '17:00', type: 'WOD', coach: 'Miguel' },
       { time: '18:00', type: 'WOD', coach: 'Carlos' },
       { time: '19:00', type: 'WOD', coach: 'Miguel' },
-      { time: '20:00', type: 'Barbell', coach: 'Sara' }
+      { time: '20:00', type: 'WOD', coach: 'Sara' }
     ]
   },
   {
@@ -322,8 +312,8 @@ export const schedule: DaySchedule[] = [
       { time: '07:00', type: 'WOD', coach: 'Miguel' },
       { time: '08:00', type: 'WOD', coach: 'Carlos' },
       { time: '09:00', type: 'WOD', coach: 'Sara' },
-      { time: '10:00', type: 'Open Gym' },
-      { time: '11:00', type: 'Barbell', coach: 'Miguel' }
+      { time: '10:00', type: 'WOD', coach: 'Miguel' },
+      { time: '11:00', type: 'WOD', coach: 'Miguel' }
     ]
   }
 ];
@@ -355,11 +345,11 @@ export const testimonios: Testimonio[] = [
     initials: 'VT',
     role: 'Atleta — 6 meses',
     color: '#4CAF50',
-    text: 'Vine por el Barbell Club y me quedé por todo lo demás. Los WODs son duros pero los coaches siempre te ayudan a escalar los movimientos. 100% recomendado.'
+    text: 'Vine por los WODs y me quedé por todo lo demás. La programación es retadora, pero los coaches siempre te ayudan a escalar y progresar. 100% recomendado.'
   }
 ];
 
-export const leadPrograms: string[] = programas.map((programa) => programa.title);
+export const leadPrograms: string[] = practiceAreas.map((area) => area.title);
 
 export function createWhatsAppUrl(message?: string): string {
   const baseUrl = `https://wa.me/${contactDetails.whatsappNumber}`;
