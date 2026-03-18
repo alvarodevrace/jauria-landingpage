@@ -14,6 +14,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isMenuOpen = false;
   readonly navLinks = navLinks;
   readonly joinUrl = createWhatsAppUrl(heroJoinMessage);
+  readonly lightLogo = 'assets/images/logo.png';
+  readonly darkLogo = 'assets/images/logoNegro.png';
   private readonly isFirefox = typeof navigator !== 'undefined' && /firefox/i.test(navigator.userAgent);
 
   @HostListener('window:scroll')

@@ -30,6 +30,7 @@ export interface DaySchedule {
   day: string;
   short: string;
   classes: ClassSlot[];
+  summary?: string;
 }
 
 export interface Testimonio {
@@ -83,7 +84,8 @@ export const navLinks: NavLink[] = [
   { label: 'Membresías', href: '#membresias' },
   { label: 'Horarios', href: '#horarios' },
   { label: 'Comunidad', href: '#testimonios' },
-  { label: 'Contacto', href: '#contacto' }
+  { label: 'Contacto', href: '#contacto' },
+  { label: 'Privacidad', href: '#privacidad' }
 ];
 
 export const contactDetails: ContactDetail = {
@@ -95,7 +97,7 @@ export const contactDetails: ContactDetail = {
   responseCopy: 'Respuesta rápida en horario del box',
   responseExpectation: 'Respondemos en horario del box, normalmente el mismo dia.',
   locationLabel: 'Isla Baltra, Quito, Ecuador',
-  serviceHours: ['Lun–Vie: 5:30 am – 9:00 pm', 'Sáb: 6:30 am – 2:00 pm'],
+  serviceHours: ['Lun–Vie: 6:00 am – 10:00 am · 4:00 pm – 9:00 pm', 'Sáb: 8:00 am – 10:00 am'],
   mapEmbedUrl:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7936!2d-78.4845541!3d-0.1663393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMDDCsDEwJzAwLjYiUyA3OMKwMjknMDQuNiJX!5e0!3m2!1ses!2sec!4v1'
 };
@@ -240,80 +242,96 @@ export const schedule: DaySchedule[] = [
   {
     day: 'Lunes',
     short: 'LUN',
+    summary: '6:00 am – 10:00 am / 4:00 pm – 9:00 pm',
     classes: [
       { time: '06:00', type: 'WOD', coach: 'Miguel' },
       { time: '07:00', type: 'WOD', coach: 'Sara' },
       { time: '08:00', type: 'WOD', coach: 'Miguel' },
-      { time: '12:00', type: 'WOD' },
-      { time: '17:00', type: 'WOD', coach: 'Carlos' },
-      { time: '18:00', type: 'WOD', coach: 'Sara' },
-      { time: '19:00', type: 'WOD', coach: 'Carlos' },
-      { time: '20:00', type: 'WOD', coach: 'Miguel' }
+      { time: '09:00', type: 'WOD', coach: 'Sara' },
+      { time: '16:00', type: 'WOD', coach: 'Carlos' },
+      { time: '17:00', type: 'WOD', coach: 'Sara' },
+      { time: '18:00', type: 'WOD', coach: 'Carlos' },
+      { time: '19:00', type: 'WOD', coach: 'Miguel' },
+      { time: '20:00', type: 'WOD', coach: 'Sara' },
+      { time: '21:00', type: 'WOD', coach: 'Miguel' }
     ]
   },
   {
     day: 'Martes',
     short: 'MAR',
+    summary: '6:00 am – 10:00 am / 4:00 pm – 9:00 pm',
     classes: [
       { time: '06:00', type: 'WOD', coach: 'Sara' },
-      { time: '07:00', type: 'WOD', coach: 'Carlos' },
+      { time: '07:00', type: 'WOD', coach: 'Miguel' },
       { time: '08:00', type: 'WOD', coach: 'Sara' },
-      { time: '12:00', type: 'WOD' },
+      { time: '09:00', type: 'WOD', coach: 'Miguel' },
+      { time: '16:00', type: 'WOD', coach: 'Carlos' },
       { time: '17:00', type: 'WOD', coach: 'Miguel' },
       { time: '18:00', type: 'WOD', coach: 'Carlos' },
-      { time: '19:00', type: 'WOD', coach: 'Miguel' }
+      { time: '19:00', type: 'WOD', coach: 'Sara' },
+      { time: '20:00', type: 'WOD', coach: 'Miguel' },
+      { time: '21:00', type: 'WOD', coach: 'Carlos' }
     ]
   },
   {
     day: 'Miércoles',
     short: 'MIÉ',
+    summary: '6:00 am – 10:00 am / 4:00 pm – 9:00 pm',
     classes: [
       { time: '06:00', type: 'WOD', coach: 'Carlos' },
       { time: '07:00', type: 'WOD', coach: 'Miguel' },
       { time: '08:00', type: 'WOD', coach: 'Carlos' },
-      { time: '12:00', type: 'WOD' },
-      { time: '17:00', type: 'WOD', coach: 'Sara' },
-      { time: '18:00', type: 'WOD', coach: 'Miguel' },
-      { time: '19:00', type: 'WOD', coach: 'Sara' },
-      { time: '20:00', type: 'WOD', coach: 'Carlos' }
+      { time: '09:00', type: 'WOD', coach: 'Sara' },
+      { time: '16:00', type: 'WOD', coach: 'Sara' },
+      { time: '17:00', type: 'WOD', coach: 'Miguel' },
+      { time: '18:00', type: 'WOD', coach: 'Sara' },
+      { time: '19:00', type: 'WOD', coach: 'Carlos' },
+      { time: '20:00', type: 'WOD', coach: 'Miguel' },
+      { time: '21:00', type: 'WOD', coach: 'Carlos' }
     ]
   },
   {
     day: 'Jueves',
     short: 'JUE',
+    summary: '6:00 am – 10:00 am / 4:00 pm – 9:00 pm',
     classes: [
       { time: '06:00', type: 'WOD', coach: 'Miguel' },
       { time: '07:00', type: 'WOD', coach: 'Sara' },
       { time: '08:00', type: 'WOD', coach: 'Miguel' },
-      { time: '12:00', type: 'WOD' },
-      { time: '17:00', type: 'WOD', coach: 'Carlos' },
-      { time: '18:00', type: 'WOD', coach: 'Sara' },
-      { time: '19:00', type: 'WOD', coach: 'Carlos' }
+      { time: '09:00', type: 'WOD', coach: 'Sara' },
+      { time: '16:00', type: 'WOD', coach: 'Carlos' },
+      { time: '17:00', type: 'WOD', coach: 'Sara' },
+      { time: '18:00', type: 'WOD', coach: 'Miguel' },
+      { time: '19:00', type: 'WOD', coach: 'Carlos' },
+      { time: '20:00', type: 'WOD', coach: 'Sara' },
+      { time: '21:00', type: 'WOD', coach: 'Miguel' }
     ]
   },
   {
     day: 'Viernes',
     short: 'VIE',
+    summary: '6:00 am – 10:00 am / 4:00 pm – 9:00 pm',
     classes: [
       { time: '06:00', type: 'WOD', coach: 'Sara' },
       { time: '07:00', type: 'WOD', coach: 'Carlos' },
       { time: '08:00', type: 'WOD', coach: 'Sara' },
-      { time: '12:00', type: 'WOD' },
-      { time: '17:00', type: 'WOD', coach: 'Miguel' },
-      { time: '18:00', type: 'WOD', coach: 'Carlos' },
-      { time: '19:00', type: 'WOD', coach: 'Miguel' },
-      { time: '20:00', type: 'WOD', coach: 'Sara' }
+      { time: '09:00', type: 'WOD', coach: 'Miguel' },
+      { time: '16:00', type: 'WOD', coach: 'Miguel' },
+      { time: '17:00', type: 'WOD', coach: 'Carlos' },
+      { time: '18:00', type: 'WOD', coach: 'Sara' },
+      { time: '19:00', type: 'WOD', coach: 'Carlos' },
+      { time: '20:00', type: 'WOD', coach: 'Miguel' },
+      { time: '21:00', type: 'WOD', coach: 'Sara' }
     ]
   },
   {
     day: 'Sábado',
     short: 'SÁB',
+    summary: '8:00 am – 10:00 am',
     classes: [
-      { time: '07:00', type: 'WOD', coach: 'Miguel' },
-      { time: '08:00', type: 'WOD', coach: 'Carlos' },
-      { time: '09:00', type: 'WOD', coach: 'Sara' },
-      { time: '10:00', type: 'WOD', coach: 'Miguel' },
-      { time: '11:00', type: 'WOD', coach: 'Miguel' }
+      { time: '08:00', type: 'WOD', coach: 'Miguel' },
+      { time: '09:00', type: 'WOD', coach: 'Carlos' },
+      { time: '10:00', type: 'WOD', coach: 'Sara' }
     ]
   }
 ];

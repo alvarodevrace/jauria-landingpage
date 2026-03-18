@@ -4,33 +4,35 @@
       <span class="section-eyebrow">Tu semana en orden</span>
       <h2 class="section-title">HORARIOS</h2>
       <p class="section-subtitle">
-        Un horario claro para que entrenar se vuelva parte de tu rutina, no una decisión que postergas.
+        Entrena con intención: horarios claros, coaches dedicados y bloques que acompañan tu ritmo diario.
       </p>
     </div>
 
-    <div class="horarios__grid">
-        @for (day of schedule; track day.day) {
-        <article class="day-col">
-          <div class="day-col__header">
-            <span class="day-col__short">{{ day.short }}</span>
-            <span class="day-col__full">{{ day.day }}</span>
+    <div class="horarios__cards">
+      @for (block of blocks; track block.id) {
+        <article class="horarios-card" [class.horarios-card--warm]="block.accent === 'warm'"
+          [class.horarios-card--cool]="block.accent === 'cool'">
+          <div class="horarios-card__head">
+            <span class="horarios-card__days">{{ block.days }}</span>
+            <span class="horarios-card__range">{{ block.range }}</span>
           </div>
-          <div class="day-col__summary">{{ getDailySummary(day) }}</div>
-          <div class="day-col__chips">
-            @for (tag of getDailyTags(day); track tag) {
-              <span class="day-chip">{{ tag }}</span>
-            }
+          <h4 class="horarios-card__title">{{ block.title }}</h4>
+          <p class="horarios-card__description">{{ block.description }}</p>
+          <div class="horarios-card__times">
+            <span *ngFor="let time of block.times; let last = last">
+              {{ time }}<span *ngIf="!last"> · </span>
+            </span>
           </div>
-          <div class="day-col__count">{{ day.classes.length }} bloques disponibles</div>
+          <div class="horarios-card__meta">
+            <span class="horarios-card__meta-label">Coaches</span>
+            <ul>
+              @for (coach of block.coaches; track coach) {
+                <li>{{ coach }}</li>
+              }
+            </ul>
+          </div>
         </article>
-        }
+      }
     </div>
-
-    <p class="horarios__note">
-      Si quieres el horario exacto actualizado o saber qué bloque te conviene más, escríbenos por Instagram o WhatsApp.
-      Síguenos en
-      <a [href]="instagramUrl" target="_blank" rel="noopener">{{ instagramHandle }}</a>
-      para actualizaciones semanales.
-    </p>
   </div>
 </section>
