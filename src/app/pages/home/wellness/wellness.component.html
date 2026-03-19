@@ -1,0 +1,34 @@
+<section class="wellness section">
+  <div class="container">
+    <div class="wellness__header">
+      <div>
+        <span class="section-eyebrow">La experiencia</span>
+        <h2 class="section-title">BIENESTAR QUE SE CONSTRUYE ENTRENANDO</h2>
+      </div>
+      <p class="section-subtitle">
+        Un entrenamiento bien llevado no solo mejora tu rendimiento. También ordena tu energía, tu foco y tu constancia.
+      </p>
+    </div>
+
+    <div class="wellness__grid">
+      @for (metric of metrics; track metric.label) {
+        <article class="metric-card">
+          <div class="metric-card__ring" [style.--progress]="metric.progress + '%'">
+            <div class="metric-card__ring-core">
+              <span class="metric-card__value">{{ metric.value }}</span>
+              <span class="metric-card__label">{{ metric.label }}</span>
+            </div>
+          </div>
+          <p class="metric-card__detail">{{ metric.detail }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="wellness__footer">
+      <p>Empieza con una visita, conoce el box y entiende cuál plan se ajusta mejor a ti.</p>
+      <a class="btn btn--primary" [href]="whatsappUrl" target="_blank" rel="noopener">
+        AGENDA TU VISITA
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,17 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-interface ClassSlot {
-  time: string;
-  type: 'WOD' | 'Open Gym' | 'Barbell';
-  coach?: string;
-}
-
-interface DaySchedule {
-  day: string;
-  short: string;
-  classes: ClassSlot[];
-}
+import { contactDetails } from '../../../shared/content/landing-content';
 
 @Component({
   selector: 'app-horarios',
@@ -21,91 +10,54 @@ interface DaySchedule {
   styleUrl: './horarios.component.scss'
 })
 export class HorariosComponent {
-  filters: Array<'WOD' | 'Open Gym' | 'Barbell' | 'todos'> = ['todos', 'WOD', 'Open Gym', 'Barbell'];
-  activeFilter: 'WOD' | 'Open Gym' | 'Barbell' | 'todos' = 'todos';
+  readonly instagramUrl = contactDetails.instagramUrl;
+  readonly instagramHandle = contactDetails.instagramHandle;
 
-  schedule: DaySchedule[] = [
+  private readonly horarioBlocks: HorarioBlock[] = [
     {
-      day: 'Lunes', short: 'LUN',
-      classes: [
-        { time: '06:00', type: 'WOD', coach: 'Miguel' },
-        { time: '07:00', type: 'WOD', coach: 'Sara' },
-        { time: '08:00', type: 'WOD', coach: 'Miguel' },
-        { time: '12:00', type: 'Open Gym' },
-        { time: '17:00', type: 'WOD', coach: 'Carlos' },
-        { time: '18:00', type: 'WOD', coach: 'Sara' },
-        { time: '19:00', type: 'WOD', coach: 'Carlos' },
-        { time: '20:00', type: 'Barbell', coach: 'Miguel' }
-      ]
+      id: 'matutino',
+      days: 'Lun–Vie',
+      title: 'Bloque Matutino',
+      range: '6:00 am – 10:00 am',
+      description: 'Sesiones para arrancar el día con técnica, movilidad y WODs energéticos.',
+      times: ['06:00', '07:00', '08:00', '09:00'],
+      accent: 'warm',
+      coaches: ['Tony Meza · Lun · Mar · Jue · Sáb', 'Jaz Chillagana · Mié · Vie'],
     },
     {
-      day: 'Martes', short: 'MAR',
-      classes: [
-        { time: '06:00', type: 'WOD', coach: 'Sara' },
-        { time: '07:00', type: 'WOD', coach: 'Carlos' },
-        { time: '08:00', type: 'WOD', coach: 'Sara' },
-        { time: '12:00', type: 'Open Gym' },
-        { time: '17:00', type: 'WOD', coach: 'Miguel' },
-        { time: '18:00', type: 'WOD', coach: 'Carlos' },
-        { time: '19:00', type: 'WOD', coach: 'Miguel' }
-      ]
+      id: 'vespertino',
+      days: 'Lun–Vie',
+      title: 'Bloque Vespertino',
+      range: '4:00 pm – 9:00 pm',
+      description: 'Intensidad controlada con énfasis en fuerza y acondicionamiento fino.',
+      times: ['16:00', '17:00', '18:00', '19:00', '20:00', '21:00'],
+      accent: 'cool',
+      coaches: ['Tony Meza · Lun · Mar · Jue', 'Jaz Chillagana · Mié · Vie'],
     },
     {
-      day: 'Miércoles', short: 'MIÉ',
-      classes: [
-        { time: '06:00', type: 'WOD', coach: 'Carlos' },
-        { time: '07:00', type: 'WOD', coach: 'Miguel' },
-        { time: '08:00', type: 'WOD', coach: 'Carlos' },
-        { time: '12:00', type: 'Open Gym' },
-        { time: '17:00', type: 'WOD', coach: 'Sara' },
-        { time: '18:00', type: 'WOD', coach: 'Miguel' },
-        { time: '19:00', type: 'WOD', coach: 'Sara' },
-        { time: '20:00', type: 'Barbell', coach: 'Carlos' }
-      ]
+      id: 'sabado',
+      days: 'Sáb',
+      title: 'Sábado & Skills',
+      range: '8:00 am – 10:00 am',
+      description: 'Entrenamientos concentrados para técnica, movilidad y sesiones de comunidad.',
+      times: ['08:00', '09:00'],
+      accent: 'neutral',
+      coaches: ['Tony Meza · Sáb'],
     },
-    {
-      day: 'Jueves', short: 'JUE',
-      classes: [
-        { time: '06:00', type: 'WOD', coach: 'Miguel' },
-        { time: '07:00', type: 'WOD', coach: 'Sara' },
-        { time: '08:00', type: 'WOD', coach: 'Miguel' },
-        { time: '12:00', type: 'Open Gym' },
-        { time: '17:00', type: 'WOD', coach: 'Carlos' },
-        { time: '18:00', type: 'WOD', coach: 'Sara' },
-        { time: '19:00', type: 'WOD', coach: 'Carlos' }
-      ]
-    },
-    {
-      day: 'Viernes', short: 'VIE',
-      classes: [
-        { time: '06:00', type: 'WOD', coach: 'Sara' },
-        { time: '07:00', type: 'WOD', coach: 'Carlos' },
-        { time: '08:00', type: 'WOD', coach: 'Sara' },
-        { time: '12:00', type: 'Open Gym' },
-        { time: '17:00', type: 'WOD', coach: 'Miguel' },
-        { time: '18:00', type: 'WOD', coach: 'Carlos' },
-        { time: '19:00', type: 'WOD', coach: 'Miguel' },
-        { time: '20:00', type: 'Barbell', coach: 'Sara' }
-      ]
-    },
-    {
-      day: 'Sábado', short: 'SÁB',
-      classes: [
-        { time: '07:00', type: 'WOD', coach: 'Miguel' },
-        { time: '08:00', type: 'WOD', coach: 'Carlos' },
-        { time: '09:00', type: 'WOD', coach: 'Sara' },
-        { time: '10:00', type: 'Open Gym' },
-        { time: '11:00', type: 'Barbell', coach: 'Miguel' }
-      ]
-    }
   ];
 
-  setFilter(filter: 'WOD' | 'Open Gym' | 'Barbell' | 'todos'): void {
-    this.activeFilter = filter;
+  get blocks() {
+    return this.horarioBlocks;
   }
+}
 
-  getFilteredClasses(classes: ClassSlot[]): ClassSlot[] {
-    if (this.activeFilter === 'todos') return classes;
-    return classes.filter(c => c.type === this.activeFilter);
-  }
+interface HorarioBlock {
+  id: string;
+  days: string;
+  title: string;
+  range: string;
+  description: string;
+  times: string[];
+  coaches: string[];
+  accent: 'warm' | 'cool' | 'neutral';
 }

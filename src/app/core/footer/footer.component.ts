@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { contactDetails, createWhatsAppUrl, navLinks } from '../../shared/content/landing-content';
 
 @Component({
   selector: 'app-footer',
@@ -9,15 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  currentYear = new Date().getFullYear();
-
-  navLinks = [
-    { label: 'Programas', href: '#programas' },
-    { label: 'Galería', href: '#galeria' },
-    { label: 'Membresías', href: '#membresias' },
-    { label: 'Horarios', href: '#horarios' },
-    { label: 'Contacto', href: '#contacto' }
-  ];
+  readonly currentYear = new Date().getFullYear();
+  readonly contact = contactDetails;
+  readonly whatsappUrl = createWhatsAppUrl();
+  readonly navLinks = navLinks;
 
   scrollTo(href: string): void {
     const el = document.querySelector(href);

@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../../../environments/environment';
+import { contactDetails, createWhatsAppUrl, leadPrograms } from '../../../shared/content/landing-content';
 
 interface LeadForm {
   nombre: string;
@@ -21,6 +23,11 @@ interface LeadForm {
 })
 export class ContactoComponent implements OnInit {
   private supabase!: SupabaseClient;
+  private sanitizer = inject(DomSanitizer);
+  readonly contact = contactDetails;
+  readonly whatsappUrl = createWhatsAppUrl();
+  readonly respuestaEsperada = contactDetails.responseExpectation;
+  readonly safeMapEmbedUrl: SafeResourceUrl;
 
   form: LeadForm = {
     nombre: '',
@@ -34,17 +41,20 @@ export class ContactoComponent implements OnInit {
   submitSuccess = false;
   submitError = '';
 
-  programas = [
-    'CrossFit WOD',
-    'Open Gym',
-    'Barbell Club',
-    'CrossFit Kids',
-    'Competición',
-    'Fundamentos'
-  ];
+  readonly programas = leadPrograms;
+
+  constructor() {
+    this.safeMapEmbedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.contact.mapEmbedUrl);
+  }
 
   ngOnInit(): void {
-    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
+    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      }
+    });
   }
 
   async onSubmit(): Promise<void> {

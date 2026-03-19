@@ -2,7 +2,7 @@
   <div class="navbar__container">
     <!-- Logo -->
     <a class="navbar__logo" (click)="scrollTo('#hero')" style="cursor:pointer">
-      <img src="assets/images/logo.jpg" alt="Jauría Strength and Fitness" class="navbar__logo-img">
+      <img [src]="isScrolled ? darkLogo : lightLogo" alt="Jauría Strength and Fitness" class="navbar__logo-img">
       <span class="navbar__logo-text">JAURÍA</span>
     </a>
 
@@ -20,7 +20,7 @@
     <!-- CTA Button -->
     <a
       class="btn btn--primary btn--sm navbar__cta"
-      href="https://wa.me/593983936154?text=Hola%2C%20me%20interesa%20unirme%20a%20Jau%C3%ADa%20Strength%20and%20Fitness"
+      [href]="joinUrl"
       target="_blank"
       rel="noopener"
     >
@@ -52,7 +52,7 @@
     </button>
 
     <div class="mobile-menu__logo">
-      <img src="assets/images/logo.jpg" alt="Jauría" class="mobile-menu__logo-img">
+      <img src="assets/images/logo.png" alt="Jauría" class="mobile-menu__logo-img">
       <span>JAURÍA</span>
     </div>
 
@@ -68,7 +68,7 @@
 
     <a
       class="btn btn--primary mobile-menu__cta"
-      href="https://wa.me/593983936154?text=Hola%2C%20me%20interesa%20unirme%20a%20Jau%C3%ADa%20Strength%20and%20Fitness"
+      [href]="joinUrl"
       target="_blank"
       rel="noopener"
       (click)="closeMenu()"

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from './hero/hero.component';
-import { StatsComponent } from './stats/stats.component';
-import { ProgramasComponent } from './programas/programas.component';
+import { ClubComponent } from './club/club.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+import { ProgramasComponent } from './programas/programas.component';
+import { WellnessComponent } from './wellness/wellness.component';
 import { MembresiasComponent } from './membresias/membresias.component';
 import { HorariosComponent } from './horarios/horarios.component';
 import { TestimoniosComponent } from './testimonios/testimonios.component';
@@ -15,9 +16,10 @@ import { ContactoComponent } from './contacto/contacto.component';
   imports: [
     CommonModule,
     HeroComponent,
-    StatsComponent,
-    ProgramasComponent,
+    ClubComponent,
     GaleriaComponent,
+    ProgramasComponent,
+    WellnessComponent,
     MembresiasComponent,
     HorariosComponent,
     TestimoniosComponent,

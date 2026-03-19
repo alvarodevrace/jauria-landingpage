@@ -40,7 +40,7 @@
             class="btn plan-card__cta"
             [class.btn--primary]="plan.popular"
             [class.btn--outline-red]="!plan.popular"
-            [href]="'https://wa.me/593983936154?text=' + plan.waText"
+            [href]="getMembershipUrl(plan.waMessage)"
             target="_blank"
             rel="noopener"
           >
@@ -52,7 +52,7 @@
 
     <p class="membresias__note">
       * Primera clase gratis. Cancela en cualquier momento.
-      <a href="https://wa.me/593983936154" target="_blank" rel="noopener">Contáctanos</a> para más info.
+      <a [href]="contactUrl" target="_blank" rel="noopener">Contáctanos</a> para más info.
     </p>
   </div>
 </section>

@@ -1,11 +1,12 @@
-$primary: #B71C1C;
-$bg: #0a0a0a;
-$white: #FFFFFF;
-$text: #CCCCCC;
-$muted: #666666;
-$border: #2a2a2a;
+$primary: #A61F24;
+$bg: #0E0F10;
+$white: #F4F1EB;
+$text: #D2CBC1;
+$muted: #938C84;
+$border: #2B3033;
+$surface: #151718;
 $font-heading: 'Bebas Neue', sans-serif;
-$font-body: 'Inter', sans-serif;
+$font-body: 'Manrope', sans-serif;
 $z-navbar: 1000;
 $z-overlay: 1100;
 
@@ -24,11 +25,27 @@ $z-overlay: 1100;
   }
 
   &--scrolled {
-    background: rgba(10, 10, 10, 0.96);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(244, 241, 235, 0.94);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     padding: 10px 0;
-    box-shadow: 0 1px 0 $border;
+    box-shadow: 0 10px 30px rgba(8, 9, 10, 0.08);
+
+    .navbar__logo-text {
+      color: $bg;
+    }
+
+    .navbar__link {
+      color: #58524b;
+
+      &:hover {
+        color: $bg;
+      }
+    }
+
+    .navbar__hamburger span {
+      background: $bg;
+    }
 
     @media (min-width: 640px) {
       padding: 12px 0;
@@ -51,6 +68,11 @@ $z-overlay: 1100;
     @media (min-width: 1024px) {
       padding: 0 48px;
     }
+
+    @media (max-width: 379px) {
+      padding: 0 12px;
+      gap: 10px;
+    }
   }
 
   &__logo {
@@ -62,14 +84,15 @@ $z-overlay: 1100;
   }
 
   &__logo-img {
-    width: 28px;
-    height: 28px;
-    border-radius: 4px;
-    object-fit: cover;
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    object-position: center;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
 
     @media (min-width: 640px) {
-      width: 36px;
-      height: 36px;
+      width: 42px;
+      height: 42px;
     }
   }
 
@@ -81,6 +104,10 @@ $z-overlay: 1100;
 
     @media (min-width: 640px) {
       font-size: 24px;
+    }
+
+    @media (max-width: 379px) {
+      font-size: 18px;
     }
   }
 
@@ -104,7 +131,7 @@ $z-overlay: 1100;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: $text;
+    color: rgba(244, 241, 235, 0.82);
     text-decoration: none;
     transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -183,6 +210,14 @@ $z-overlay: 1100;
   }
 }
 
+:host-context(html.browser-firefox) {
+  .navbar--scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(244, 241, 235, 0.98);
+  }
+}
+
 // Mobile Menu
 .mobile-menu {
   position: fixed;
@@ -207,7 +242,7 @@ $z-overlay: 1100;
   &__backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(8, 9, 10, 0.72);
     opacity: 0;
     transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -218,7 +253,7 @@ $z-overlay: 1100;
     right: 0;
     bottom: 0;
     width: min(320px, 85vw);
-    background: #141414;
+    background: $surface;
     border-left: 1px solid $border;
     display: flex;
     flex-direction: column;
@@ -226,6 +261,11 @@ $z-overlay: 1100;
     transform: translateX(100%);
     transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
+
+    @media (max-width: 479px) {
+      width: min(100vw, 420px);
+      padding: 20px;
+    }
   }
 
   &__close {
@@ -250,10 +290,10 @@ $z-overlay: 1100;
     margin-bottom: 40px;
 
     img {
-      width: 40px;
-      height: 40px;
-      border-radius: 4px;
-      object-fit: cover;
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      object-position: center;
     }
 
     span {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jauriacrossfitness.com/sitemap.xml

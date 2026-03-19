@@ -1,15 +1,25 @@
 <section class="programas section" id="programas">
   <div class="container">
-    <div class="section__header">
-      <span class="section-eyebrow">Lo que hacemos</span>
-      <h2 class="section-title">NUESTROS PROGRAMAS</h2>
-      <p class="section-subtitle">
-        Entrenamiento de élite para todos los niveles. Encuentra tu camino hacia la mejor versión de ti mismo.
-      </p>
+    <div class="programas__intro">
+      <div class="programas__copy">
+        <span class="section-eyebrow">Áreas de práctica</span>
+        <h2 class="section-title">QUÉ SE ENTRENA EN JAURÍA</h2>
+        <p class="section-subtitle">
+          Todo entra en un WOD, pero el progreso nace de dominar distintas capacidades:
+          motor, gimnasia, barra, fuerza y técnica.
+        </p>
+      </div>
+      <div class="programas__media">
+        @for (image of atmosphereImages; track image) {
+          <div class="programas__media-item">
+            <img [src]="image" alt="Atmósfera Jauría" loading="lazy">
+          </div>
+        }
+      </div>
     </div>
 
     <div class="programas__grid">
-      @for (programa of programas; track programa.title) {
+      @for (programa of practiceAreas; track programa.title) {
         <article class="programa-card">
           <div class="programa-card__image-wrap">
             <img
@@ -18,26 +28,21 @@
               class="programa-card__image"
               loading="lazy"
             >
-            <div class="programa-card__overlay"></div>
             <span class="programa-card__tag">{{ programa.tag }}</span>
           </div>
           <div class="programa-card__body">
             <h3 class="programa-card__title">{{ programa.title }}</h3>
             <p class="programa-card__desc">{{ programa.description }}</p>
-            <a
-              class="programa-card__link"
-              href="https://wa.me/593983936154?text=Hola%2C%20me%20interesa%20el%20programa%20{{ programa.title }}"
-              target="_blank"
-              rel="noopener"
-            >
-              Más info
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </a>
           </div>
         </article>
       }
+    </div>
+
+    <div class="programas__footer">
+      <p>Cada semana mezclamos estas áreas dentro del WOD para que entrenes con intención y no por improvisación.</p>
+      <a class="btn btn--outline-red" [href]="getProgramUrl('Jauría Strength and Fitness')" target="_blank" rel="noopener">
+        HABLAR CON EL BOX
+      </a>
     </div>
   </div>
 </section>

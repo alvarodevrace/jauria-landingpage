@@ -1,16 +1,22 @@
 <section class="galeria section" id="galeria">
   <div class="container">
-    <div class="section__header">
-      <span class="section-eyebrow">Nuestra comunidad</span>
-      <h2 class="section-title">GALERÍA</h2>
+    <div class="galeria__header">
+      <div>
+        <span class="section-eyebrow">Así se vive Jauría</span>
+        <h2 class="section-title">UN BOX QUE QUIERES HABITAR</h2>
+      </div>
       <p class="section-subtitle">
-        Momentos de esfuerzo, superación y comunidad. Esto es Jauría.
+        Si estás evaluando dónde empezar, estas fotos te muestran lo importante: energía real, espacio real y gente real entrenando.
       </p>
     </div>
 
     <div class="galeria__grid">
       @for (image of images; track image.src) {
-        <div class="galeria__item" (click)="openLightbox(image.src, image.alt)">
+        <div
+          class="galeria__item"
+          [class.galeria__item--featured]="image.featured"
+          (click)="openLightbox(image.src, image.alt)"
+        >
           <img
             [src]="image.src"
             [alt]="image.alt"
@@ -18,9 +24,7 @@
             loading="lazy"
           >
           <div class="galeria__overlay">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-            </svg>
+            <span>Ver foto</span>
           </div>
         </div>
       }
