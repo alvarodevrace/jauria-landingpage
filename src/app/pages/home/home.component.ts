@@ -9,7 +9,6 @@ import { MembresiasComponent } from './membresias/membresias.component';
 import { HorariosComponent } from './horarios/horarios.component';
 import { TestimoniosComponent } from './testimonios/testimonios.component';
 import { ContactoComponent } from './contacto/contacto.component';
-import { PrivacyComponent } from '../privacy/privacy.component';
 
 @Component({
   selector: 'app-home',
@@ -24,8 +23,7 @@ import { PrivacyComponent } from '../privacy/privacy.component';
     MembresiasComponent,
     HorariosComponent,
     TestimoniosComponent,
-    ContactoComponent,
-    PrivacyComponent
+    ContactoComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

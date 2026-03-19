@@ -84,8 +84,7 @@ export const navLinks: NavLink[] = [
   { label: 'Membresías', href: '#membresias' },
   { label: 'Horarios', href: '#horarios' },
   { label: 'Comunidad', href: '#testimonios' },
-  { label: 'Contacto', href: '#contacto' },
-  { label: 'Privacidad', href: '#privacidad' }
+  { label: 'Contacto', href: '#contacto' }
 ];
 
 export const contactDetails: ContactDetail = {
