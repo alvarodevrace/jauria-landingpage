@@ -48,7 +48,13 @@ export class ContactoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
+    this.supabase = createClient(environment.supabaseUrl, environment.supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      }
+    });
   }
 
   async onSubmit(): Promise<void> {
