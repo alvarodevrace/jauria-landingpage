@@ -88,8 +88,8 @@ export const navLinks: NavLink[] = [
 ];
 
 export const contactDetails: ContactDetail = {
-  whatsappNumber: '593983936154',
-  whatsappDisplay: '+593 98 393 6154',
+  whatsappNumber: '593989801023',
+  whatsappDisplay: '+593 98 980 1023',
   instagramUrl: 'https://www.instagram.com/jauriastrengthandfitness/',
   instagramHandle: '@jauriastrengthandfitness',
   facebookUrl: 'https://www.facebook.com/jauriastrengthandfitness/?locale=es_LA',
