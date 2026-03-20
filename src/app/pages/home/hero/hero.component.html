@@ -13,7 +13,10 @@
             class="hero__slide-img"
             [attr.loading]="i === 0 ? 'eager' : 'lazy'"
             [attr.fetchpriority]="i === 0 ? 'high' : 'low'"
+            [attr.width]="i === 0 ? 1015 : null"
+            [attr.height]="i === 0 ? 1020 : null"
             decoding="async"
+            sizes="100vw"
           >
         }
       </div>
