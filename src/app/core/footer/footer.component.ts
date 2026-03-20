@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 import { contactDetails, createWhatsAppUrl, navLinks } from '../../shared/content/landing-content';
 
 @Component({
@@ -14,6 +15,7 @@ export class FooterComponent {
   readonly contact = contactDetails;
   readonly whatsappUrl = createWhatsAppUrl();
   readonly navLinks = navLinks;
+  private readonly analytics = inject(GoogleAnalyticsService);
 
   scrollTo(href: string): void {
     const el = document.querySelector(href);
@@ -21,5 +23,9 @@ export class FooterComponent {
       const top = el.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
     }
+  }
+
+  trackWhatsAppClick(): void {
+    this.analytics.trackWhatsAppClick('footer');
   }
 }

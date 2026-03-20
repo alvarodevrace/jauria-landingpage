@@ -6,11 +6,16 @@
         class="hero__slide"
         [class.hero__slide--active]="i === currentIndex"
       >
-        <img
-          [src]="slide"
-          [alt]="'Jauría CrossFit slide ' + (i + 1)"
-          class="hero__slide-img"
-        >
+        @if (shouldLoadSlide(i)) {
+          <img
+            [src]="slide"
+            [alt]="'Jauría CrossFit slide ' + (i + 1)"
+            class="hero__slide-img"
+            [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+            [attr.fetchpriority]="i === 0 ? 'high' : 'low'"
+            decoding="async"
+          >
+        }
       </div>
     }
   </div>
@@ -42,6 +47,7 @@
             [href]="joinUrl"
             target="_blank"
             rel="noopener"
+            (click)="trackPrimaryCta()"
           >
             AGENDA TU VISITA
           </a>

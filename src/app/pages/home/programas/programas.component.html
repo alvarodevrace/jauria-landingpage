@@ -12,7 +12,7 @@
       <div class="programas__media">
         @for (image of atmosphereImages; track image) {
           <div class="programas__media-item">
-            <img [src]="image" alt="Atmósfera Jauría" loading="lazy">
+            <img [src]="image" alt="Atmósfera Jauría" loading="lazy" decoding="async">
           </div>
         }
       </div>
@@ -27,6 +27,7 @@
               [alt]="programa.title"
               class="programa-card__image"
               loading="lazy"
+              decoding="async"
             >
             <span class="programa-card__tag">{{ programa.tag }}</span>
           </div>

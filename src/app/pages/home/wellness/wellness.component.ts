@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GoogleAnalyticsService } from '../../../core/services/google-analytics.service';
 import { heroJoinMessage, wellnessMetrics, createWhatsAppUrl } from '../../../shared/content/landing-content';
 
 @Component({
@@ -12,4 +13,10 @@ import { heroJoinMessage, wellnessMetrics, createWhatsAppUrl } from '../../../sh
 export class WellnessComponent {
   readonly metrics = wellnessMetrics;
   readonly whatsappUrl = createWhatsAppUrl(heroJoinMessage);
+  private readonly analytics = inject(GoogleAnalyticsService);
+
+  trackPrimaryCta(): void {
+    this.analytics.trackFreeClassSignup('wellness');
+    this.analytics.trackWhatsAppClick('wellness');
+  }
 }
