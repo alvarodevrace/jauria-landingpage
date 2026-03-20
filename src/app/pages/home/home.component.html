@@ -1,8 +1,16 @@
 <main class="home">
   <app-hero></app-hero>
   <app-club></app-club>
-  <app-galeria></app-galeria>
-  <app-programas></app-programas>
+  @defer (on idle) {
+    <app-galeria></app-galeria>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
+  @defer (on idle) {
+    <app-programas></app-programas>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
   <app-wellness></app-wellness>
   <app-membresias></app-membresias>
   <app-horarios></app-horarios>

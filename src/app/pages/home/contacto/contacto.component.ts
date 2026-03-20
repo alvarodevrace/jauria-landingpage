@@ -4,6 +4,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../../../environments/environment';
+import { GoogleAnalyticsService } from '../../../core/services/google-analytics.service';
 import { contactDetails, createWhatsAppUrl, leadPrograms } from '../../../shared/content/landing-content';
 
 interface LeadForm {
@@ -24,6 +25,7 @@ interface LeadForm {
 export class ContactoComponent implements OnInit {
   private supabase!: SupabaseClient;
   private sanitizer = inject(DomSanitizer);
+  private analytics = inject(GoogleAnalyticsService);
   readonly contact = contactDetails;
   readonly whatsappUrl = createWhatsAppUrl();
   readonly respuestaEsperada = contactDetails.responseExpectation;
@@ -78,6 +80,7 @@ export class ContactoComponent implements OnInit {
       if (error) throw error;
 
       this.submitSuccess = true;
+      this.analytics.trackContactForm(this.form.programa);
       this.form = { nombre: '', email: '', telefono: '', mensaje: '', programa: '' };
 
       setTimeout(() => {
@@ -89,5 +92,9 @@ export class ContactoComponent implements OnInit {
     } finally {
       this.isSubmitting = false;
     }
+  }
+
+  trackWhatsAppClick(source: string): void {
+    this.analytics.trackWhatsAppClick(source);
   }
 }

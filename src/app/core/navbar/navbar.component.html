@@ -23,6 +23,7 @@
       [href]="joinUrl"
       target="_blank"
       rel="noopener"
+      (click)="trackJoinClick('navbar')"
     >
       ÚNETE
     </a>
@@ -72,6 +73,7 @@
       target="_blank"
       rel="noopener"
       (click)="closeMenu()"
+      (click)="trackJoinClick('navbar_mobile')"
     >
       ÚNETE AHORA
     </a>
