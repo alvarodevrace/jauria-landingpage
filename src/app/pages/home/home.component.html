@@ -1,6 +1,10 @@
 <main class="home">
   <app-hero></app-hero>
-  <app-club></app-club>
+  @defer (on idle) {
+    <app-club></app-club>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
   @defer (on idle) {
     <app-galeria></app-galeria>
   } @placeholder {
@@ -11,9 +15,29 @@
   } @placeholder {
     <section class="section" aria-hidden="true"></section>
   }
-  <app-wellness></app-wellness>
-  <app-membresias></app-membresias>
-  <app-horarios></app-horarios>
-  <app-testimonios></app-testimonios>
-  <app-contacto></app-contacto>
+  @defer (on idle) {
+    <app-wellness></app-wellness>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
+  @defer (on idle) {
+    <app-membresias></app-membresias>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
+  @defer (on idle) {
+    <app-horarios></app-horarios>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
+  @defer (on idle) {
+    <app-testimonios></app-testimonios>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
+  @defer (on idle) {
+    <app-contacto></app-contacto>
+  } @placeholder {
+    <section class="section" aria-hidden="true"></section>
+  }
 </main>
