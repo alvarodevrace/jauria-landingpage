@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 import { createWhatsAppUrl, heroJoinMessage, navLinks } from '../../shared/content/landing-content';
 
 @Component({
@@ -17,6 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   readonly lightLogo = 'assets/images/logo.png';
   readonly darkLogo = 'assets/images/logoNegro.png';
   private readonly isFirefox = typeof navigator !== 'undefined' && /firefox/i.test(navigator.userAgent);
+  private readonly analytics = inject(GoogleAnalyticsService);
 
   @HostListener('window:scroll')
   onScroll(): void {
@@ -50,5 +52,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
+  }
+
+  trackJoinClick(source: string): void {
+    this.analytics.trackFreeClassSignup(source);
+    this.analytics.trackWhatsAppClick(source);
   }
 }

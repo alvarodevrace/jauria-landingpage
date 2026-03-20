@@ -22,6 +22,7 @@
             [alt]="image.alt"
             class="galeria__img"
             loading="lazy"
+            decoding="async"
           >
           <div class="galeria__overlay">
             <span>Ver foto</span>
@@ -40,6 +41,6 @@
         <path d="M18 6L6 18M6 6l12 12"/>
       </svg>
     </button>
-    <img [src]="lightboxImage" [alt]="lightboxAlt" class="lightbox__image">
+    <img [src]="lightboxImage" [alt]="lightboxAlt" class="lightbox__image" decoding="async">
   </div>
 }

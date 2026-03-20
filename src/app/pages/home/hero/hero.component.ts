@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { GoogleAnalyticsService } from '../../../core/services/google-analytics.service';
 import { createWhatsAppUrl, heroJoinMessage, slides } from '../../../shared/content/landing-content';
 
 @Component({
@@ -15,6 +16,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   currentIndex = 0;
   private intervalId: ReturnType<typeof setInterval> | null = null;
   private readonly INTERVAL_MS = 5000;
+  private readonly analytics = inject(GoogleAnalyticsService);
 
   ngOnInit(): void {
     this.startAutoplay();
@@ -47,11 +49,21 @@ export class HeroComponent implements OnInit, OnDestroy {
     this.currentIndex = (this.currentIndex + 1) % this.slides.length;
   }
 
+  shouldLoadSlide(index: number): boolean {
+    const nextIndex = (this.currentIndex + 1) % this.slides.length;
+    return index === this.currentIndex || index === nextIndex;
+  }
+
   scrollTo(href: string): void {
     const el = document.querySelector(href);
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
     }
+  }
+
+  trackPrimaryCta(): void {
+    this.analytics.trackFreeClassSignup('hero');
+    this.analytics.trackWhatsAppClick('hero');
   }
 }
